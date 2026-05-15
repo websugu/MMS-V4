@@ -64,7 +64,7 @@ body {
 }
 
 .nav-container {
-  max-width: 1200px;
+  max-width: 1300px;
   margin: 0 auto;
   padding: 0 20px;
   display: flex;
@@ -196,55 +196,169 @@ body {
 }
 
 /* ===== HERO SECTION ===== */
-.hero {
-  width: 100%;
-  max-width: 1920px;
-  margin: 0 auto;
-  position: relative;
-  overflow: hidden;
-}
+.section{
+      background:#e2171f;
+      overflow-x:hidden;
+      color:white;
+    }
+    .hero{
+      position:relative;
+      width:100%;
+      height:50vh;
+      overflow:hidden;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:
+      radial-gradient(circle at top,#1a1a1a01 0%,#0505050f 60%);
+    }
 
-.hero img {
-  width: 100%;
-  height: auto;
-  aspect-ratio: 1920 / 800;
-  object-fit: cover;
-  display: block;
-}
+    /* DARK OVERLAY */
+    .hero::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+      linear-gradient(to bottom,
+      rgba(0, 0, 0, 0.40),
+      rgba(0, 0, 0, 0.40),
+      rgba(0, 0, 0, 0.40));
+      z-index:2;
+      pointer-events:none;
+    }
 
-.hero::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  /* background: rgba(0, 0, 0, 0.45); */
-}
+    /* HERO CONTENT */
+    .hero-content{
+      position:relative;
+      z-index:5;
+      text-align:center;
+      padding:20px;
+    }
 
-.hero-content {
-  position: relative;
-  z-index: 1;
-  max-width: 640px;
-  margin: 0 auto;
-}
+    .hero h1{
+      font-size:clamp(3rem,7vw,7rem);
+      font-weight:800;
+      line-height:1;
+      letter-spacing:-3px;
+      text-transform:uppercase;
+      background:linear-gradient(to right,#fff,#ffffff);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+      margin-bottom:20px;
+    }
 
-.hero h1 {
-  font-size: 2.8rem;
-  font-weight: 800;
-  color: #151515;
-  margin-bottom: 12px;
-  letter-spacing: -0.02em;
-  text-shadow: 0 2px 10px rgba(0,0,0,0.3);
-}
+    .hero p{
+      font-size:1.1rem;
+      color:#d0d0d0;
+      max-width:700px;
+      margin:auto;
+      line-height:1.7;
+    }
 
-.hero p {
-  font-size: 1.1rem;
-  color: rgba(53, 49, 49, 0.9);
-  margin-bottom: 32px;
-  font-weight: 400;
-  text-shadow: 0 1px 4px rgba(0,0,0,0.3);
-}
+    /* IMAGE GRID */
+    .image-grid{
+      position:absolute;
+      inset:0;
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:18px;
+      padding:18px;
+      z-index:1;
+      transform:scale(1.05);
+    }
+
+    .column{
+      position:relative;
+      overflow:hidden;
+      height:100vh;
+      border-radius:28px;
+    }
+
+    .column-track{
+      display:flex;
+      flex-direction:column;
+      gap:18px;
+      position:absolute;
+      width:100%;
+    }
+
+    .column img{
+      width:100%;
+      height:420px;
+      object-fit:cover;
+      border-radius:28px;
+      filter:brightness(.8);
+      transition:.4s;
+      box-shadow:
+      0 10px 30px rgba(0,0,0,.4);
+    }
+
+    .column img:hover{
+      transform:scale(1.03);
+      filter:brightness(1);
+    }
+
+    /* ANIMATIONS */
+    .scroll-up{
+      animation:scrollUp 22s linear infinite;
+    }
+
+    .scroll-down{
+      animation:scrollDown 22s linear infinite;
+    }
+
+    @keyframes scrollUp{
+      from{
+        transform:translateY(0);
+      }
+      to{
+        transform:translateY(-50%);
+      }
+    }
+
+    @keyframes scrollDown{
+      from{
+        transform:translateY(-50%);
+      }
+      to{
+        transform:translateY(0);
+      }
+    }
+
+    /* RESPONSIVE */
+    @media(max-width:900px){
+
+      .image-grid{
+        grid-template-columns:repeat(2,1fr);
+      }
+
+      .hero h1{
+        font-size:3.5rem;
+      }
+
+      .hero p{
+        font-size:1rem;
+      }
+    }
+
+    @media(max-width:600px){
+
+      .image-grid{
+        grid-template-columns:1fr 1fr;
+        gap:12px;
+        padding:12px;
+      }
+
+      .column img{
+        height:300px;
+        border-radius:20px;
+      }
+
+      .hero h1{
+        font-size:2.5rem;
+        letter-spacing:-1px;
+      }
+    }
 
 /* ===== SEARCH ===== */
 .search-section {
@@ -301,9 +415,9 @@ body {
 
 /* ===== SECTION HEADER ===== */
 .section-header {
-  max-width: 1200px;
+  max-width: 1300px;
   margin: 0 auto 28px;
-  padding: 0 20px;
+  padding: 0 10px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -323,7 +437,7 @@ body {
 
 /* ===== FILTERS BAR ===== */
 .filters-bar {
-  max-width: 1200px;
+  max-width: 1300px;
   margin: 0 auto 20px;
   padding: 0 0px;
   display: flex;
@@ -412,14 +526,14 @@ body {
 
 /* ===== PRODUCTS GRID ===== */
 .products-wrapper {
-  max-width: 1200px;
+  max-width: 1300px;
   margin: 0 auto;
   padding: 0 20px 60px;
 }
 
 #products-container {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
   gap: 24px;
 }
 
@@ -713,7 +827,9 @@ body {
   .hero h1 {
     font-size: 2rem;
   }
-  
+  .hero{
+    height: 40vh;
+  }
   #products-container {
     grid-template-columns: repeat(2, 1fr);
     gap: 14px;
@@ -745,14 +861,72 @@ body {
 <div id="navbar"></div>
 
 <!-- Hero Section -->
-<div class="hero">
-  <div>
-    <img src="IMG/b3.png" alt="">
-  </div>
-  <!-- <div class="hero-content">
-    <h1>FAIS RESSORTIR TON UNIVERS</h1>
-    <p>Habillez votre iPhone avec style – Coques haut de gamme à prix imbattables</p>
-  </div> -->
+<div class="section">
+    <section class="hero">
+
+    <!-- IMAGE BACKGROUND -->
+    <div class="image-grid">
+
+      <!-- COLUMN 1 -->
+      <div class="column">
+        <div class="column-track scroll-up">
+          <img src="CASES STOCK/ame.png" />
+          <img src="CASES STOCK/ame (9).png" />
+          <img src="CASES STOCK/ame (8).png" />
+          <img src="CASES STOCK/ame (7).png" />
+          <img src="CASES STOCK/ame (6).png" />
+          <img src="CASES STOCK/ame (5).png" />
+        </div>
+      </div>
+
+      <!-- COLUMN 2 -->
+      <div class="column">
+        <div class="column-track scroll-down">
+          <img src="https://www.coverscart.com/cdn/shop/files/Manga-Style-Luffy-Shockproof-Hybrid-Protection-_Metal-_-TPU_-Back-Case-Cover-CoversCart-75206553.jpg?v=1758926566&width=990" />
+          <img src="https://www.coverscart.com/cdn/shop/files/Pirate-Luffy-Shockproof-Hybrid-Protection-_Metal-_-TPU_-Back-Case-Cover-CoversCart-74613086.jpg?v=1758925585&width=990" />
+          <img src="https://www.coverscart.com/cdn/shop/files/Itachi-Combat-Shockproof-Hybrid-Protection-_Metal-_-TPU_-Back-Case-Cover-CoversCart-75681816.jpg?v=1758954871&width=990" />
+          <img src="https://www.coverscart.com/cdn/shop/files/Naruto-Ready-Action-Shockproof-Hybrid-Protection-_Metal-_-TPU_-Back-Case-Cover-CoversCart-76298325.jpg?v=1758955594&width=990" />
+          <img src="https://www.coverscart.com/cdn/shop/files/Naruto-Akatsuki-Pattern-Shockproof-Hybrid-Protection-_Metal-_-TPU_-Back-Case-Cover-CoversCart-76186017.jpg?v=1758955452&width=990" />
+          <img src="https://www.coverscart.com/cdn/shop/files/Awesome-Jinwoo-Arise-Shockproof-Hybrid-Protection-_Metal-_-TPU_-Back-Case-Cover-CoversCart-86180781.jpg?v=1758938145&width=990" />
+        </div>
+      </div>
+
+      <!-- COLUMN 3 -->
+      <div class="column">
+        <div class="column-track scroll-up">
+          <img src="https://www.coverscart.com/cdn/shop/files/Great-Arise-Shockproof-Hybrid-Protection-_Metal-_-TPU_-Back-Case-Cover-CoversCart-86181139.jpg?v=1758938149&width=990" />
+          <img src="https://www.coverscart.com/cdn/shop/files/Be-Greater-Shockproof-Hybrid-Protection-_Metal-_-TPU_-Back-Case-Cover-CoversCart-75437539.jpg?v=1758954584&width=990" />
+          <img src="https://www.coverscart.com/cdn/shop/files/Mountain-King-Inosuke-Shockproof-Hybrid-Protection-_Metal-_-TPU_-Back-Case-Cover-CoversCart-131428950.jpg?v=1760513017&width=990" />
+          <img src="https://www.coverscart.com/cdn/shop/files/captain-Levi-Stance-Shockproof-Hybrid-Protection-_Metal-_-TPU_-Back-Case-Cover-CoversCart-75114339.jpg?v=1758926332&width=990" />
+          <img src="https://www.coverscart.com/cdn/shop/files/Demon-King-Sukuna-Shockproof-Hybrid-Protection-_Metal-_-TPU_-Back-Case-Cover-CoversCart-76714214.jpg?v=1758956377&width=990" />
+          <img src="https://www.coverscart.com/cdn/shop/files/Demon-King-Sukuna-Shockproof-Hybrid-Protection-_Metal-_-TPU_-Back-Case-Cover-CoversCart-76714214.jpg?v=1758956377&width=990" />
+        </div>
+      </div>
+
+      <!-- COLUMN 4 -->
+      <div class="column">
+        <div class="column-track scroll-down">
+          <img src="https://www.coverscart.com/cdn/shop/files/Muzan-Kibutsuji-Shockproof-Hybrid-Protection-_Metal-_-TPU_-Back-Case-Cover-CoversCart-75549976.jpg?v=1758954714&width=990" />
+          <img src="https://www.coverscart.com/cdn/shop/files/Demon-King-Sukuna-Shockproof-Hybrid-Protection-_Metal-_-TPU_-Back-Case-Cover-CoversCart-76714214.jpg?v=1758956377&width=990" />
+          <img src="https://www.coverscart.com/cdn/shop/files/Goku-Vegeta-Art-Shockproof-Hybrid-Protection-_Metal-_-TPU_-Back-Case-Cover-CoversCart-76648925.jpg?v=1758956217&width=990" />
+          <img src="https://www.coverscart.com/cdn/shop/files/Angry-Goku-Shockproof-Hybrid-Protection-_Metal-_-TPU_-Back-Case-Cover-CoversCart-75770054.jpg?v=1758954971&width=990" />
+          <img src="https://www.coverscart.com/cdn/shop/files/Asta-With-Black-Bulls-Shockproof-Hybrid-Protection-_Metal-_-TPU_-Back-Case-Cover-CoversCart-76123438.jpg?v=1758955389&width=990" />
+          <img src="https://www.coverscart.com/cdn/shop/files/Asta-Ready-For-Battle-Shockproof-Hybrid-Protection-_Metal-_-TPU_-Back-Case-Cover-CoversCart-75916158.jpg?v=1758955153&width=990" />
+        </div>
+      </div>
+
+    </div>
+
+    <!-- HERO TEXT -->
+    <div class="hero-content">
+      <h1>Décor En Manga</h1>
+      <p>
+        Exprime ta passion manga avec style. Des décorations modernes, des designs japonais iconiques et des créations inspirées de tes héros préférés pour donner vie à ta chambre, ton bureau ou ton setup gaming.
+      </p>
+    </div>
+
+  </section>
+
 </div>
 
 <!-- Search -->
@@ -774,7 +948,7 @@ body {
   <div class="filters-bar" id="category-filters">
     <div class="category-chips" id="category-chips">
       <button class="chip active" data-category="all">Tous</button>
-      <button class="chip" data-category="Coques">Coques</button>
+      <button class="chip" data-category="Coques">Anime</button>
       <button class="chip" data-category="Accessoires">Accessoires</button>
       <button class="chip" data-category="Chargeurs">Chargeurs</button>
       <button class="chip" data-category="Écouteurs">Écouteurs</button>
@@ -793,7 +967,7 @@ body {
 
 <!-- Footer -->
 <div class="footer">
-  Mon Manga Store — Built with
+  Mon Manga Store — 2026
 </div>
 
 <!-- 🔐 FIREBASE AUTH + LOAD PRODUCTS -->
